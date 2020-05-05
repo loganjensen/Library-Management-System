@@ -7,109 +7,106 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.html">Library-Loan System</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="checkin.html">Check-in Book</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="checkout.html">Check-out Book</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="students.html">Manage Students</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="books.html">Manage Books</a>
-            </li>
-            </ul>
-        </div>
-        </nav>
-        <h1>Manage Books</h1>
-        <form action="#" method="POST">
-            <fieldset>
-              <h4>Add a book:</h4>
-                <label for="title">Title:</label>
-                <input type="text" id="title" name="title">
-                <br>
-                <label for="fnameauthor">Author first name:</label>
-                <input type="text" id="fnameauthor" name="fnameauthor">
-                <br>
-                <label for="lnameauthor">Author last name:</label>
-                <input type="text" id="fnameauthor" name="fnameauthor">
-                <br>
-                <label for="genre">Choose genre(s):</label>  
-                <select id="genre" name="genre" size="4" multiple>
-                    <option value="adventure">Adventure</option>
-                    <option value="fantasy">Fantasy</option>
-                    <option value="sciencefiction">Science Fiction</option>
-                    <option value="horror">Horror</option>
-                    <option value="western">Western</option>
-                    <option value="romance">Romance</option>
-                    <option value="thriller">Thriller</option>
-                    <option value="mystery">Mystery</option>
-                    <option value="detective">Detective</option>
-                    <option value="dystopia">Dystopia</option>
-                    <option value="play">Play</option>
-                    <option value="biography">Biography</option>
-                </select><br><br>
-                <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>              
-                <input type="submit" value="Submit">
-            </fieldset>
-          </form>
-          <br><br>
-          <form action="#" method="POST">
-            <fieldset>
-              <h4>Remove a book:</h4>
-                <label for="title">Title:</label>
-                <input type="text" id="title" name="title">
-                <br>
-                <label for="fnameauthor">Author first name:</label>
-                <input type="text" id="fnameauthor" name="fnameauthor">
-                <br>
-                <label for="lnameauthor">Author last name:</label>
-                <input type="text" id="fnameauthor" name="fnameauthor">
-                <br>
-                <input type="submit" value="Submit">
-            </fieldset>
-         </form>
-         <br><br>
-         <form action="#" method="POST">
-            <fieldset>
-              <h4>Find a book:</h4>
-                <label for="title">Title:</label>
-                <input type="text" id="title" name="title">
-                <br>
-                <label for="fnameauthor">Author first name:</label>
-                <input type="text" id="fnameauthor" name="fnameauthor">
-                <br>
-                <label for="lnameauthor">Author last name:</label>
-                <input type="text" id="fnameauthor" name="fnameauthor">
-                <br>
-                <label for="genre">Choose genre(s):</label>  
-                <select id="genre" name="genre" size="4" multiple>
-                    <option value="adventure">Adventure</option>
-                    <option value="fantasy">Fantasy</option>
-                    <option value="sciencefiction">Science Fiction</option>
-                    <option value="horror">Horror</option>
-                    <option value="western">Western</option>
-                    <option value="romance">Romance</option>
-                    <option value="thriller">Thriller</option>
-                    <option value="mystery">Mystery</option>
-                    <option value="detective">Detective</option>
-                    <option value="dystopia">Dystopia</option>
-                    <option value="play">Play</option>
-                    <option value="biography">Biography</option>
-                </select><br><br>
-                <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>              
-                <input type="submit" value="Submit">
-            </fieldset>
-         </form>
+      <a class="navbar-brand" href="index.html">Library-Loan System</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="booksonloan.html">Books on Loan</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="students.html">Manage Students</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="books.html">Manage Books</a>
+          </li>
+        </ul>
+      </div>
+</nav>
+  <h1>Manage Books</h1>
+  <form action="#" method="POST">
+      <fieldset>
+        <h4>Add a book:</h4>
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title">
+          <br>
+          <label for="fnameauthor">Author first name:</label>
+          <input type="text" id="fnameauthor" name="fnameauthor">
+          <br>
+          <label for="lnameauthor">Author last name:</label>
+          <input type="text" id="fnameauthor" name="fnameauthor">
+          <br>
+          <label for="genre">Choose genre(s):</label>  
+          <select id="genre" name="genre" size="4" multiple>
+              <option value="adventure">Adventure</option>
+              <option value="fantasy">Fantasy</option>
+              <option value="sciencefiction">Science Fiction</option>
+              <option value="horror">Horror</option>
+              <option value="western">Western</option>
+              <option value="romance">Romance</option>
+              <option value="thriller">Thriller</option>
+              <option value="mystery">Mystery</option>
+              <option value="detective">Detective</option>
+              <option value="dystopia">Dystopia</option>
+              <option value="play">Play</option>
+              <option value="biography">Biography</option>
+          </select><br><br>
+          <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>              
+          <input type="submit" value="Submit">
+      </fieldset>
+    </form>
+    <br><br>
+    <form action="#" method="POST">
+      <fieldset>
+        <h4>Remove a book:</h4>
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title">
+          <br>
+          <label for="fnameauthor">Author first name:</label>
+          <input type="text" id="fnameauthor" name="fnameauthor">
+          <br>
+          <label for="lnameauthor">Author last name:</label>
+          <input type="text" id="fnameauthor" name="fnameauthor">
+          <br>
+          <input type="submit" value="Submit">
+      </fieldset>
+    </form>
+    <br><br>
+    <form action="#" method="POST">
+      <fieldset>
+        <h4>Find a book:</h4>
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title">
+          <br>
+          <label for="fnameauthor">Author first name:</label>
+          <input type="text" id="fnameauthor" name="fnameauthor">
+          <br>
+          <label for="lnameauthor">Author last name:</label>
+          <input type="text" id="fnameauthor" name="fnameauthor">
+          <br>
+          <label for="genre">Choose genre(s):</label>  
+          <select id="genre" name="genre" size="4" multiple>
+              <option value="adventure">Adventure</option>
+              <option value="fantasy">Fantasy</option>
+              <option value="sciencefiction">Science Fiction</option>
+              <option value="horror">Horror</option>
+              <option value="western">Western</option>
+              <option value="romance">Romance</option>
+              <option value="thriller">Thriller</option>
+              <option value="mystery">Mystery</option>
+              <option value="detective">Detective</option>
+              <option value="dystopia">Dystopia</option>
+              <option value="play">Play</option>
+              <option value="biography">Biography</option>
+          </select><br><br>
+          <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>              
+          <input type="submit" value="Submit">
+      </fieldset>
+    </form>
   </body>
   </html>
