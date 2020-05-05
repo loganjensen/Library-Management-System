@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Library Loan-System Database</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="index.html">Library-Loan System</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="booksonloan.html">Books on Loan</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="students.html">Manage Students</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="books.html">Manage Books</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <form action="#" method="POST">
+        <fieldset>
+          <h4>Loan a Book:</h4>
+            <label for="loanID">Loan ID:</label>
+            <input type="number" id="loanID" name="loanID">
+            <br>
+            <label for="studentID">Student ID:</label>
+            <input type="number" id="studentID" name="studentID">
+            <br>
+            <label for="bookid">Book ID:</label>
+            <input type="number" id="bookid" name="bookid">
+            <br>
+            <label for="loandate">Date Loaned:</label>
+            <input type="date" id="loandate" name="loandate">
+            <br>
+            <label for="duedate">Date Due:</label>
+            <input type="date" id="duedate" name="duedate">
+            <br>
+            <label for="datereturned">Date Returned:</label>
+            <input type="date" id="datereturned" name="datereturned">
+            <br>
+            <input type="submit" value="Submit">
+        </fieldset>
+      </form>
+      <br><br>
+      <input type="button" name="return" value="Return" onclick="window.location = 'booksonloan.html'">
+  </body>
+  </html>

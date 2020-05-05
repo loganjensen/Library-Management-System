@@ -28,7 +28,38 @@
           </ul>
         </div>
       </nav>
-
       <h1>Books on Loan</h1>
+      <br>
+      <input type="button" name="checkoutbook" value="Loan a Book" onclick="window.location = 'addloanbook.html'">
+      <br><br>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Loan ID</th>
+            <th scope="col">Student ID</th>
+            <th scope="col">Book ID</th>
+            <th scope="col">Date Loaned</th>
+            <th scope="col">Date Due</th>
+            <th scope="col">Date Returned</th>
+            <th scope="col">Late Fee</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>23</td>
+            <td>25</td>
+            <td>5/3/20</td>
+            <td>6/3/20</td>
+            <td>7/7/10</td>
+            <td>10</td>
+            <td>
+              <input type="button" name="updateloanedbook" value="update" onclick="window.location = 'updateloanbook.html'">
+              <input type="button" name="deleteloanedbook" value="delete">
+            </td>
+          </tr>
+        </tbody>
+      </table>
   </body>
   </html>
