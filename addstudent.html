@@ -27,33 +27,24 @@
           </li>
         </ul>
       </div>
-</nav>
-  <h1>Manage Books</h1>
-  <br>
-  <input type="button" name="add_book" value="Add a Book" onclick="window.location = 'addbook.html'">
-  <br><br>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Title</th>
-        <th scope="col">Author</th>
-        <th scope="col">Genre</th>
-        <th scope="col">Year Published</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">The Great Gatsby</th>
-        <td>F. Scott Fitzgerald</td>
-        <td>Tragedy</td>
-        <td>1925</td>
-        <td>
-          <input type="button" name="update_book" value="update" onclick="window.location = 'updatebook.html'">
-          <input type="button" name="delete_book" value="delete">
-        </td>
-      </tr>
-      </tbody>
-    </table>
+    </nav>
+    <form action="#" method="POST">
+        <fieldset>
+          <h4>Add a student:</h4>
+            <label for="fname">First name:</label>
+            <input type="text" id="fname" name="fname">
+            <br>
+            <label for="studentid">Student ID:</label>
+            <input type="number" id="studentid" name="studentid">
+            <br>
+            <label for="lname">Last name:</label>
+            <input type="text" id="lname" name="lname">
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <input type="submit" value="Submit">
+        </fieldset>
+      </form>
+      <input type="button" name="return" value="Return" onclick="window.location = 'students.html'">
   </body>
-</html>
+  </html>

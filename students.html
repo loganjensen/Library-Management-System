@@ -29,49 +29,31 @@
       </div>
     </nav>
     <h1>Manage Students</h1>
-    <form action="#" method="POST">
-      <fieldset>
-        <h4>Add a student:</h4>
-          <label for="fname">First name:</label>
-          <input type="text" id="fname" name="fname">
-          <br>
-          <label for="lname">Last name:</label>
-          <input type="text" id="lname" name="lname">
-          <br>
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email">
-          <input type="submit" value="Submit">
-      </fieldset>
-    </form>
+    <br>
+    <input type="button" name="add_student" value="Add a Student" onclick="window.location = 'addstudent.html'">
     <br><br>
-    <form action="#" method="POST">
-      <fieldset>
-        <h4>Delete a student:</h4>
-          <label for="fname">First name:</label>
-          <input type="text" id="fname" name="fname">
-          <br>
-          <label for="lname">Last name:</label>
-          <input type="text" id="lname" name="lname">
-          <br>
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email">
-          <input type="submit" value="Submit">
-      </fieldset>
-    </form>
-    <br><br>
-    <form action="#" method="POST">
-      <fieldset>
-        <h4>Find a student:</h4>
-          <label for="fname">First name:</label>
-          <input type="text" id="fname" name="fname">
-          <br>
-          <label for="lname">Last name:</label>
-          <input type="text" id="lname" name="lname">
-          <br>
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email">
-          <input type="submit" value="Submit">
-      </fieldset>
-    </form>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">StudentID</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Email</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Bill</td>
+          <td>Test</td>
+          <td>test@fake.com</td>
+          <td>
+            <input type="button" name="update_student" value="update" onclick="window.location = 'updatestudent.html'">
+            <input type="button" name="delete_student" value="delete">
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </body>
   </html>
