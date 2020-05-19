@@ -1,12 +1,16 @@
--- Authors: Logan Jensen and Christopher Breniser
+-- Authors: Logan Jensen and Chris Brensier
 -- Date: May 18, 2020
 -- Course: CS 340
 -- Section: 401
 -- Group: 36
 -- Project Title: Library Loan-System Database
---------------------------------------------------------
+
+--
+-- Manipuation for Books
 -- Books need: Create, Read, Update, Delete
--- Read all entries of books
+--
+
+-- Read all entries of Book
 SELECT * FROM 'Books'
 -- Read titles to fill loan a book drop down
 SELECT bookID,title FROM 'Books'
@@ -21,7 +25,10 @@ UPDATE 'books' SET 'title' = :title, 'year_published' = :year_published, 'author
 -- Delete book entry
 DELETE FROM 'Books' WHERE id = :book_id_from_delete_form
 
--- Genres
+--
+-- Manipuation for Genres
+--
+
 -- Read all Genres for main list page
 SELECT * FROM 'Genres'
 -- Read names for search drop down
@@ -31,7 +38,10 @@ UPDATE 'Genres' SET 'genre_name' = :genre_name WHERE 'genreID' = :genre_id_from_
 -- Delete genre entry
 DELETE FROM 'Genres' WHERE 'genreID' = :genre_id_from_delete_form
 
--- Authors
+--
+-- Manipuation for Authors
+--
+
 -- Read all Authors for main list
 SELECT * FROM 'Authors'
 -- Read Authors name for search drop down
@@ -48,7 +58,6 @@ DELETE FROM 'Authors' WHERE 'authorID' = :author_id_from_delete_form
 
 -- Query to display studentID, first_name, last_name, and email for all students
 SELECT * FROM `Students`;
-
 
 -- Query to insert new student into Students table
 INSERT INTO `Students` (`first_name`, `last_name`, `email`)

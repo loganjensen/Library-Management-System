@@ -1,4 +1,4 @@
--- Authors: Logan Jensen and Christopher Breniser
+-- Authors: Logan Jensen and Chris Brensier
 -- Date: May 18, 2020
 -- Course: CS 340
 -- Section: 401
