@@ -4,7 +4,6 @@
 -- Section: 401
 -- Group: 36
 -- Project Title: Library Loan-System Database
---------------------------------------------------------
 
 --
 -- a) Data Definition Queries
@@ -15,9 +14,9 @@
 --
 DROP TABLE IF EXISTS `Authors`;
 CREATE TABLE `Authors` (
-    `authorID` int NOT NULL AUTO-INCREMENT PRIMARY KEY,
+    `authorID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `first_name` varchar(255) NOT NULL,
-    `last_name` varchar(255) NOT NULL,
+    `last_name` varchar(255) NOT NULL
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 --
@@ -25,8 +24,8 @@ CREATE TABLE `Authors` (
 --
 DROP TABLE IF EXISTS `Genres`;
 CREATE TABLE `Genres` (
-    `genreID` int NOT NULL AUTO-INCREMENT PRIMARY KEY,
-    `genre_name` varchar(255) UNIQUE NOT NULL,
+    `genreID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `genre_name` varchar(255) UNIQUE NOT NULL
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 --
@@ -34,13 +33,13 @@ CREATE TABLE `Genres` (
 --
 DROP TABLE IF EXISTS `Books`;
 CREATE TABLE `Books` (
-    `bookID` int NOT NULL AUTO-INCREMENT PRIMARY KEY,
+    `bookID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `title` varchar(255) NOT NULL,
     `year_published` year NOT NULL,
     `authorID` int NOT NULL,
     `genreID` int NOT NULL,
     CONSTRAINT `Books_fk1` FOREIGN KEY (`authorID`) REFERENCES `Authors` (`authorID`),
-    CONSTRAINT `Books_fk2` FOREIGN KEY (`genreID`) REFERENES `Genres` (`genreID`)
+    CONSTRAINT `Books_fk2` FOREIGN KEY (`genreID`) REFERENCES `Genres` (`genreID`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 --
@@ -48,7 +47,7 @@ CREATE TABLE `Books` (
 --
 DROP TABLE IF EXISTS `Students`;
 CREATE TABLE `Students` (
-    `studentID` int NOT NULL AUTO-INCREMENT PRIMARY KEY,
+    `studentID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `first_name` varchar(255) NOT NULL,
     `last_name` varchar(255) NOT NULL,
     `email` nvarchar(320) UNIQUE NOT NULL
@@ -59,7 +58,7 @@ CREATE TABLE `Students` (
 --
 DROP TABLE IF EXISTS `Books_On_Loan`;
 CREATE TABLE `Books_On_Loan` (
-    `loanID` int NOT NULL AUTO-INCREMENT PRIMARY KEY,
+    `loanID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `bookID` int NOT NULL,
     `studentID` int NOT NULL,
     `date_checkout` date NOT NULL,
@@ -114,8 +113,8 @@ INSERT INTO `Students` (`first_name`, `last_name`, `email`) VALUES ('Sara', 'Pet
 --
 -- Books_On_Loan Sample Data
 --
-INSERT INTO `Students` (`bookID`, `studentID`, `date_checkout`, `date_due`, `date_returned`, `late_fee`) VALUES ('1', '5', '2020-01-01', '2020-02-01', '2020-01-29', '20');
-INSERT INTO `Students` (`bookID`, `studentID`, `date_checkout`, `date_due`, `date_returned`, `late_fee`) VALUES ('2', '4', '2020-02-01', '2020-02-09', '2020-02-07', '20');
-INSERT INTO `Students` (`bookID`, `studentID`, `date_checkout`, `date_due`, `date_returned`, `late_fee`) VALUES ('3', '3', '2020-03-03', '2020-03-15', '2020-03-12', '20');
-INSERT INTO `Students` (`bookID`, `studentID`, `date_checkout`, `date_due`, `date_returned`, `late_fee`) VALUES ('4', '2', '2020-04-18', '2020-04-29', '2020-04-24', '20');
-INSERT INTO `Students` (`bookID`, `studentID`, `date_checkout`, `date_due`, `date_returned`, `late_fee`) VALUES ('5', '1', '2020-05-13', '2020-05-30', '2020-5-19', '20');
+INSERT INTO `Books_On_Loan` (`bookID`, `studentID`, `date_checkout`, `date_due`, `date_returned`, `late_fee`) VALUES ('1', '5', '2020-01-01', '2020-02-01', '2020-01-29', '20');
+INSERT INTO `Books_On_Loan` (`bookID`, `studentID`, `date_checkout`, `date_due`, `date_returned`, `late_fee`) VALUES ('2', '4', '2020-02-01', '2020-02-09', '2020-02-07', '20');
+INSERT INTO `Books_On_Loan` (`bookID`, `studentID`, `date_checkout`, `date_due`, `date_returned`, `late_fee`) VALUES ('3', '3', '2020-03-03', '2020-03-15', '2020-03-12', '20');
+INSERT INTO `Books_On_Loan` (`bookID`, `studentID`, `date_checkout`, `date_due`, `date_returned`, `late_fee`) VALUES ('4', '2', '2020-04-18', '2020-04-29', '2020-04-24', '20');
+INSERT INTO `Books_On_Loan` (`bookID`, `studentID`, `date_checkout`, `date_due`, `date_returned`, `late_fee`) VALUES ('5', '1', '2020-05-13', '2020-05-30', '2020-5-19', '20');
