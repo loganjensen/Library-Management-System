@@ -1,0 +1,7 @@
+-- Authors: Logan Jensen and Christopher Breniser
+-- Date: May 18, 2020
+-- Course: CS 340
+-- Section: 401
+-- Group: 36
+-- Project Title: Library Loan-System Database
+--------------------------------------------------------
