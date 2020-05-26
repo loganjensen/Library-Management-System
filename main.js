@@ -14,6 +14,7 @@ app.set('port', process.argv[2]);
 
 ///////////////////////// UPDATE
 app.use('/', express.static('public'));
+app.use('/students', require('./students.js'));
 ///////////////////////// UPDATE
 
 
