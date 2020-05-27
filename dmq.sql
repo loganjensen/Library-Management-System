@@ -12,6 +12,9 @@
 
 -- Read all entries of Book
 SELECT * FROM 'Books'
+-- Create new book
+INSERT INTO `Books` (`title`, `year_published`, `authorID`, `genreID`)
+VALUES (:title_input, :year_published_input, :authorID_input, :genreID_input);
 -- Read titles to fill loan a book drop down
 SELECT bookID,title FROM 'Books'
 -- Read title of book with accociated Author and genre
@@ -31,6 +34,9 @@ DELETE FROM 'Books' WHERE id = :book_id_from_delete_form
 
 -- Read all Genres for main list page
 SELECT * FROM 'Genres'
+-- Create new genre
+INSERT INTO `Genres` (`genre_name`)
+VALUES (:genre_name_input);
 -- Read names for search drop down
 SELECT genre_name AS genre FROM 'Genres'
 -- Update genre info (no planned implementation on the front end)
@@ -44,6 +50,9 @@ DELETE FROM 'Genres' WHERE 'genreID' = :genre_id_from_delete_form
 
 -- Read all Authors for main list
 SELECT * FROM 'Authors'
+-- Create new author
+INSERT INTO `Authors` (`first_name`, `last_name`)
+VALUES (:first_name_input, :last_name_input);
 -- Read Authors name for search drop down
 SELECT first_name,last_name FROM 'Authors'
 -- Update authors info
