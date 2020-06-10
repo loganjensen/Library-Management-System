@@ -11,7 +11,9 @@ app.secret_key = 'SECRETKEY'
 def homepage():
     return render_template('index.html')
 
+# -----------------------------------------------
 #ROUTES PERTAINING TO STUDENTS
+# -----------------------------------------------
 @app.route('/students')
 def students():
     db_connection = connect_to_database()
@@ -81,7 +83,9 @@ def deletestudent(id):
     flash('Student has been deleted!', 'success')
     return redirect(url_for('students'))
 
+# -----------------------------------------------
 #ROUTES PERTAINING TO BOOKS
+# -----------------------------------------------
 @app.route('/books')
 def books():
     db_connection = connect_to_database()
@@ -113,8 +117,15 @@ def addbook():
 
     #Add new book to database if method is POST
     if request.method == 'POST':
+        title_input = request.form['title']
+        year_published_input = request.form['year']
+        author_input = request.form['author']
+        genre_input = request.form['genre']
 
-
+        query = "INSERT INTO Books (title, year_published, authorID, genreID) \
+        VALUES (%s, %s, %s, %s)"
+        data = (title_input, year_published_input, author_input, genre_input)
+        result = execute_query(db_connection, query, data)
 
         flash('A Book Has Been Added!', 'success')
         return redirect(url_for('books'))
@@ -132,7 +143,9 @@ def deletebook(id):
     flash('Book has been deleted!', 'success')
     return redirect(url_for('books'))
 
+# -----------------------------------------------
 #ROUTES PERTAINING TO LOANING BOOKS
+# -----------------------------------------------
 @app.route('/booksonloan')
 def booksonloan():
     db_connection = connect_to_database()
@@ -147,6 +160,40 @@ def booksonloan():
     result = execute_query(db_connection, query).fetchall()
 
     return render_template('booksonloan.html', booksonloan=result)
+
+@app.route('/addloanbook', methods=['GET','POST'])
+def addloanbook():
+    db_connection = connect_to_database()
+
+    #Show form to add a loaned book if method is GET
+    if request.method == 'GET':
+        #Get data of books and students to display options to user
+        book_query = "SELECT * FROM Books"
+        book_result = execute_query(db_connection, book_query).fetchall()
+
+        student_query = "SELECT * FROM Students"
+        student_result = execute_query(db_connection, student_query).fetchall()
+
+        return render_template('addloanbook.html', books=book_result, students=student_result)
+
+    #Add loaned book to database if method is POST
+    if request.method == 'POST':
+        book_input = request.form['book']
+        student_input = request.form['student']
+        loandate_input = request.form['loandate']
+        duedate_input = request.form['duedate']
+        date_returned = None
+        latefee_input = request.form['latefee']
+
+        query = "INSERT INTO Books_On_Loan (bookID, studentID, \
+        date_checkout, date_due, date_returned, late_fee) \
+        VALUES (%s, %s, %s, %s, %s, %s)"
+        data = (book_input, student_input, loandate_input, duedate_input, date_returned, latefee_input)
+        result = execute_query(db_connection, query, data)
+
+        flash('A book has been successfully loaned!', 'success')
+        return redirect(url_for('booksonloan'))
+
 
 @app.route('/updateloanbook')
 def updateloanbook():

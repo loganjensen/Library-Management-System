@@ -4,7 +4,7 @@
 {% block content %}
   <h1>Books on Loan</h1>
   <br>
-  <input type="button" name="checkoutbook" value="Loan a Book" onclick="window.location = 'addloanbook.html'">
+  <a href="{{url_for('addloanbook')}}"><button>Loan a Book</button></a>
   <br><br>
   <table class="table">
     <thead>

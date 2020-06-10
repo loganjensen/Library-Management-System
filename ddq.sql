@@ -102,8 +102,8 @@ INSERT INTO Genres (genre_name) VALUES ('Satire');
 INSERT INTO Books (title, year_published, authorID, genreID) VALUES ('It', '1986', '1', '3');
 INSERT INTO Books (title, year_published, authorID, genreID) VALUES ('The Shining', '1977', '1', '3');
 INSERT INTO Books (title, year_published, authorID, genreID) VALUES ('The Hollow', '1946', '5', '1');
-INSERT INTO Books (title, year_published, authorID, genreID) VALUES ('Emma', '1815', '4', '2');
-INSERT INTO Books (title, year_published, authorID, genreID) VALUES ('Oliver Twist', '1843', '3', '5');
+INSERT INTO Books (title, year_published, authorID, genreID) VALUES ('Emma', '1905', '4', '2');
+INSERT INTO Books (title, year_published, authorID, genreID) VALUES ('Oliver Twist', '1930', '3', '5');
 
 --
 -- Students Sample Data

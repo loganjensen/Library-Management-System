@@ -1,52 +1,50 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Library Loan-System Database</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="index">Library-Loan System</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="booksonloan">Books on Loan</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="students">Manage Students</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="books">Manage Books</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <form action="#" method="POST">
+<!--Loan A Book Page-->
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="/addloanbook" method="POST">
         <fieldset>
           <h4>Loan a Book:</h4>
-            <label for="loanID">Loan ID:</label>
-            <input type="number" id="loanID" name="loanID">
+
+            <!--Display students available for loan-->
+            <label for="student">Choose a student for loan:</label>
             <br>
-            <label for="studentID">Student ID:</label>
-            <input type="number" id="studentID" name="studentID">
+            {% if students %}
+                <select id="student" name="student" size="8" required>
+                  {% for student in students %}
+                    <option value="{{student[0]}}">{{student[1] + ' ' + student[2]}}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+            <br><br>
+
+            <!--Display the books available for loan-->
+            <label for="book">Choose a book to loan:</label>
             <br>
+            {% if books %}
+                <select id="book" name="book" size="8" required>
+                  {% for book in books %}
+                    <option value="{{book[0]}}">{{book[1]}}</option>
+                  {% endfor %}
+                </select>
+            {% endif %}
+            <br><br>
+
             <label for="loandate">Date Loaned:</label>
-            <input type="date" id="loandate" name="loandate">
-            <br>
+            <input type="date" id="loandate" name="loandate" required>
+            <br><br>
+
             <label for="duedate">Date Due:</label>
-            <input type="date" id="duedate" name="duedate">
-            <br>
+            <input type="date" id="duedate" name="duedate" required>
+            <br><br>
+
+            <label for="latefee">Late Fee:</label>
+            <input type="nunber" id="latefee" name="latefee" required>
+            <br><br>
+
             <input type="submit" value="Submit">
         </fieldset>
       </form>
       <br><br>
-      <input type="button" name="return" value="Return" onclick="window.location = 'booksonloan.html'">
-  </body>
-  </html>
+<a href="{{url_for('booksonloan')}}"><button>Return to Books On Loan Page</button></a>
+{% endblock %}

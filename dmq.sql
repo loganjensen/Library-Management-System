@@ -99,13 +99,13 @@ INNER JOIN Students ON Books_On_Loan.studentID = Students.studentID
 ORDER BY loanID
 
 -- Query to create a new loaned book
-INSERT INTO `Books_On_Loan` (`bookID`, `studentID`, `date_checkout`, `date_due`, `date_returned`, `late_fee`)
+INSERT INTO Books_On_Loan (bookID, studentID, date_checkout, date_due, date_returned, late_fee)
 VALUES (:bookID, :studentID, :date_checkout, :date_due, :date_returned, :late_fee);
 
 -- Query to delete a book on loan
-DELETE FROM `Books_On_Loan` WHERE loanID = :loanID;
+DELETE FROM Books_On_Loan WHERE loanID = :loanID;
 
 -- Query to update a book on loan
-UPDATE `Books_On_Loan`
+UPDATE Books_On_Loan
 SET bookID = :bookID_input, studentID = :studentID_input, date_checkout = :date_checkout_input, date_due = :date_due_input, date_returned = :date_returned_input, late_fee = :late_fee_input
 WHERE loanID = :loanID_input;
