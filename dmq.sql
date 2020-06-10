@@ -86,8 +86,14 @@ WHERE studentID = :studentID_input;
 -- Books on Loan page requires SELECT, INSERT, DELETE, UPDATE
 --
 
--- Query to display all info of a book on loan: loanID, studentID, bookID, date loaned, date due, date returned, late fee
-SELECT * FROM `Books_On_Loan`;
+-- Query to display info of a book rental
+SELECT loanID, Books.title, 
+Books_On_Loan.studentID, Students.first_name, Students.last_name,
+date_checkout, date_due, date_returned, late_fee
+FROM Books_On_Loan
+INNER JOIN Books ON Books_On_Loan.bookID = Books.bookID
+INNER JOIN Students ON Books_On_Loan.studentID = Students.studentID
+ORDER BY loanID
 
 -- Query to create a new loaned book
 INSERT INTO `Books_On_Loan` (`bookID`, `studentID`, `date_checkout`, `date_due`, `date_returned`, `late_fee`)

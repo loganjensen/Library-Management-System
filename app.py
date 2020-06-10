@@ -48,6 +48,22 @@ def addbook():
 def updatebook():
     return render_template('updatebook.html')
 
+#ROUTES PERTAINING TO LOANING BOOKS
 @app.route('/booksonloan')
 def booksonloan():
-    return render_template('booksonloan.html')
+    db_connection = connect_to_database()
+
+    query = "SELECT loanID, Books.title, \
+    Books_On_Loan.studentID, Students.first_name, Students.last_name, \
+    date_checkout, date_due, date_returned, late_fee \
+    FROM Books_On_Loan \
+    INNER JOIN Books ON Books_On_Loan.bookID = Books.bookID \
+    INNER JOIN Students ON Books_On_Loan.studentID = Students.studentID \
+    ORDER BY loanID"
+    result = execute_query(db_connection, query).fetchall()
+
+    return render_template('booksonloan.html', booksonloan=result)
+
+@app.route('/updateloanbook')
+def updateloanbook():
+    return render_template('updateloanbook.html')
