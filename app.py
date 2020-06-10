@@ -43,6 +43,19 @@ def addstudent():
         flash('A Student Has Been Added!', 'success')
         return redirect(url_for('students'))
 
+@app.route('/updatestudent')
+def updatestudent():
+    return render_template('updatestudent.html')
+
+@app.route('/deletestudent/<int:id>')
+def deletestudent(id):
+    db_connection = connect_to_database()
+    query = "DELETE FROM Students WHERE studentID = %s"
+    data = (id, )
+    result = execute_query(db_connection, query, data)
+    flash('Student has been deleted!', 'success')
+    return redirect(url_for('students'))
+
 #ROUTES PERTAINING TO BOOKS
 @app.route('/books')
 def books():
@@ -65,6 +78,15 @@ def addbook():
 @app.route('/updatebook')
 def updatebook():
     return render_template('updatebook.html')
+
+@app.route('/deletebook/<int:id>')
+def deletebook(id):
+    db_connection = connect_to_database()
+    query = "DELETE FROM Books WHERE bookID = %s"
+    data = (id, )
+    result = execute_query(db_connection, query, data)
+    flash('Book has been deleted!', 'success')
+    return redirect(url_for('books'))
 
 #ROUTES PERTAINING TO LOANING BOOKS
 @app.route('/booksonloan')

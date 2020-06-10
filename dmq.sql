@@ -13,7 +13,7 @@
 -- Read all entries of Book
 SELECT * FROM Books
 -- Create new book
-INSERT INTO `Books` (`title`, `year_published`, `authorID`, `genreID`)
+INSERT INTO Books (title, year_published, authorID, genreID)
 VALUES (:title_input, :year_published_input, :authorID_input, :genreID_input);
 -- Read titles to fill loan a book drop down
 SELECT bookID,title FROM Books
@@ -27,7 +27,7 @@ ORDER BY Title, year_published
 -- Update entry of book
 UPDATE Books SET title = :title, year_published = :year_published, authorID = :authorID, 'genreID' = :genreID WHERE 'bookID'= :book_id_from_update_form
 -- Delete book entry
-DELETE FROM Books WHERE id = :book_id_from_delete_form
+DELETE FROM Books WHERE bookID = :book_id_from_delete_form
 
 --
 -- Manipuation for Genres
@@ -74,10 +74,10 @@ INSERT INTO Students (first_name, last_name, email)
 VALUES (:first_name_input, :last_name_input, :email_input);
 
 -- Query to delete a student based on studentID
-DELETE FROM `Students` WHERE studentID = :studentID;
+DELETE FROM Students WHERE studentID = :studentID;
 
 -- Query to update a student's first_name, last_name, or email
-UPDATE `Students`
+UPDATE Students
 SET first_name = :first_name_input, last_name = :last_name_input, email = :email_input
 WHERE studentID = :studentID_input;
 

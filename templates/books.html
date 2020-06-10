@@ -38,7 +38,7 @@
       <td>{{book[6]}}</td>
       <td>
         <a href="{{url_for('updatebook')}}"><button>Update</button></a>
-        <a href=""><button>Delete</button></a>
+        <input type='button' value='Delete' name='Delete' onclick="window.location='/deletebook/{{book[0]}}'">
       </td>
     </tr>
     {% endfor %}

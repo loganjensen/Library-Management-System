@@ -22,8 +22,8 @@
       <td>{{student[2]}}</td>
       <td>{{student[3]}}</td>
       <td>
-        <a href="{{url_for('updatebook')}}"><button>Update</button></a>
-        <a href=""><button>Delete</button></a>
+        <a href="{{url_for('updatestudent')}}"><button>Update</button></a>
+        <input type='button' value='Delete' name='Delete' onclick="window.location='/deletestudent/{{student[0]}}'">
       </td>
     </tr>
     {% endfor %}
