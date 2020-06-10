@@ -9,65 +9,65 @@
 -- a) Data Definition Queries
 --
 
-DROP TABLE IF EXISTS `Authors`;
-DROP TABLE IF EXISTS `Genres`;
-DROP TABLE IF EXISTS `Books`;
-DROP TABLE IF EXISTS `Students`;
-DROP TABLE IF EXISTS `Books_On_Loan`;
+DROP TABLE IF EXISTS Authors;
+DROP TABLE IF EXISTS Genres;
+DROP TABLE IF EXISTS Books;
+DROP TABLE IF EXISTS Students;
+DROP TABLE IF EXISTS Books_On_Loan;
 
 --
 -- Authors Table
 --
-CREATE TABLE `Authors` (
-    `authorID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `first_name` varchar(255) NOT NULL,
-    `last_name` varchar(255) NOT NULL
+CREATE TABLE Authors (
+    authorID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    first_name varchar(255) NOT NULL,
+    last_name varchar(255) NOT NULL
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 --
 -- Genres Table
 --
-CREATE TABLE `Genres` (
-    `genreID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `genre_name` varchar(255) UNIQUE NOT NULL
+CREATE TABLE Genres (
+    genreID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    genre_name varchar(255) UNIQUE NOT NULL
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 --
 -- Books Table
 --
-CREATE TABLE `Books` (
-    `bookID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `title` varchar(255) NOT NULL,
-    `year_published` year NOT NULL,
-    `authorID` int NOT NULL,
-    `genreID` int NOT NULL,
-    CONSTRAINT `Books_fk1` FOREIGN KEY (`authorID`) REFERENCES `Authors` (`authorID`),
-    CONSTRAINT `Books_fk2` FOREIGN KEY (`genreID`) REFERENCES `Genres` (`genreID`)
+CREATE TABLE Books (
+    bookID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title varchar(255) NOT NULL,
+    year_published year NOT NULL,
+    authorID int NOT NULL,
+    genreID int NOT NULL,
+    CONSTRAINT Books_fk1 FOREIGN KEY (authorID) REFERENCES Authors (authorID),
+    CONSTRAINT Books_fk2 FOREIGN KEY (genreID) REFERENCES Genres (genreID)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 --
 -- Students Table
 --
-CREATE TABLE `Students` (
-    `studentID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `first_name` varchar(255) NOT NULL,
-    `last_name` varchar(255) NOT NULL,
-    `email` nvarchar(320) UNIQUE NOT NULL
+CREATE TABLE Students (
+    studentID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    first_name varchar(255) NOT NULL,
+    last_name varchar(255) NOT NULL,
+    email nvarchar(320) UNIQUE NOT NULL
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 --
 -- Books_On_Loan Table
 --
-CREATE TABLE `Books_On_Loan` (
-    `loanID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `bookID` int NOT NULL,
-    `studentID` int NOT NULL,
-    `date_checkout` date NOT NULL,
-    `date_due` date NOT NULL,
-    `date_returned` date,
-    `late_fee` float NOT NULL,
-    CONSTRAINT `Books_On_Loan_fk1` FOREIGN KEY (`bookID`) REFERENCES `Books` (`bookID`),
-    CONSTRAINT `Books_On_Loan_fk2` FOREIGN KEY (`studentID`) REFERENCES `Students` (`studentID`)
+CREATE TABLE Books_On_Loan (
+    loanID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    bookID int NOT NULL,
+    studentID int NOT NULL,
+    date_checkout date NOT NULL,
+    date_due date NOT NULL,
+    date_returned date,
+    late_fee float NOT NULL,
+    CONSTRAINT Books_On_Loan_fk1 FOREIGN KEY (bookID) REFERENCES Books (bookID),
+    CONSTRAINT Books_On_Loan_fk2 FOREIGN KEY (studentID) REFERENCES Students (studentID)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 

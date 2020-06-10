@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask import request, redirect
-# from db_connector.db_connector import connect_to_database, execute_query
+from db_connector import connect_to_database, execute_query
 
 #create the web application
 app = Flask(__name__)
@@ -13,10 +13,10 @@ def homepage():
 
 @app.route('/students')
 def students():
-    # db_connection = connect_to_database()
-    # query = "SELECT first_name, last_name, email FROM Students;"
-    # result = execute_query(db_connection, query).fetchall()
-    # print(result)
+    db_connection = connect_to_database()
+    query = "SELECT first_name, last_name, email FROM Students;"
+    result = execute_query(db_connection, query).fetchall()
+    print(result)
 
     return render_template('students.html')
 
