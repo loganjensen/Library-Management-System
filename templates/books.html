@@ -1,0 +1,46 @@
+<!--Books Page-->
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Search Books</h1>
+<form>
+ <label for="search"></label>
+  <input type="text" id="bookid" name="bookid"><br><br>
+   <input type="submit" value="Search">
+</form>
+
+  <br>
+  <h1>Manage Books</h1>
+  <br>
+  <a href="{{url_for('addbook')}}"><button>Add a Book</button></a>
+  <br><br>
+  <table class="table table-bordered" id="studentTable">
+    <thead>
+      <tr>
+        <th scope="col">Book ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Year Published</th>
+        <th scope="col">Author ID</th>
+        <th scope="col">Author First Name</th>
+        <th scope="col">Author Last Name</th>
+        <th scope="col">Genre</th>
+      </tr>
+    </thead>
+    {% for book in books %}
+    <tr>
+      <td>{{book[0]}}</td>
+      <td>{{book[1]}}</td>
+      <td>{{book[2]}}</td>
+      <td>{{book[3]}}</td>
+      <td>{{book[4]}}</td>
+      <td>{{book[5]}}</td>
+      <td>{{book[6]}}</td>
+      <td>
+        <a href="{{url_for('updatebook')}}"><button>Update</button></a>
+        <a href=""><button>Delete</button></a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
