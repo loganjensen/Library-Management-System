@@ -70,7 +70,7 @@ DELETE FROM 'Authors' WHERE 'authorID' = :author_id_from_delete_form
 SELECT * FROM Students;
 
 -- Query to insert new student into Students table
-INSERT INTO Students (`first_name`, `last_name`, `email`)
+INSERT INTO Students (first_name, last_name, email)
 VALUES (:first_name_input, :last_name_input, :email_input);
 
 -- Query to delete a student based on studentID

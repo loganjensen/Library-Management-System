@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from flask import request, redirect
+from flask import request, redirect, flash, url_for
 from db_connector import connect_to_database, execute_query
 
 #create the web application
@@ -21,9 +21,27 @@ def students():
 
     return render_template('students.html', students=result)
 
-@app.route('/addstudent')
+@app.route('/addstudent', methods=['GET','POST'])
 def addstudent():
-    return render_template('addstudent.html')
+    db_connection = connect_to_database()
+
+    #Show form to add student if method is GET
+    if request.method == 'GET':
+        return render_template('addstudent.html')
+
+    #Add new student to database if method is POST
+    if request.method == 'POST':
+        first_name_input = request.form['fname']
+        last_name_input = request.form['lname']
+        email_input = request.form['email']
+
+        query = "INSERT INTO Students (first_name, last_name, email) \
+        VALUES (%s, %s, %s)"
+        data = (first_name_input, last_name_input, email_input)
+        result = execute_query(db_connection, query, data)
+
+        flash('A Student Has Been Added!', 'success')
+        return redirect(url_for('students'))
 
 #ROUTES PERTAINING TO BOOKS
 @app.route('/books')
