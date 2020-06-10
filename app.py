@@ -43,9 +43,34 @@ def addstudent():
         flash('A Student Has Been Added!', 'success')
         return redirect(url_for('students'))
 
-@app.route('/updatestudent')
-def updatestudent():
-    return render_template('updatestudent.html')
+@app.route('/updatestudent/<int:id>', methods=['GET','POST'])
+def updatestudent(id):
+    db_connection = connect_to_database()
+
+    if request.method == 'GET':
+        query = "SELECT studentID, first_name, last_name, email FROM Students WHERE studentID = %s" % id
+        student_result = execute_query(db_connection, query).fetchall()
+        studentIDResult = execute_query(db_connection, query).fetchone()
+
+        if student_result == None:
+            return "No student found!"
+
+        return render_template('updatestudent.html', student=student_result, studentID=studentIDResult)
+
+    elif request.method == 'POST':
+        studentID_input = request.form['id']
+        first_name_input = request.form['fname']
+        last_name_input = request.form['lname']
+        email_input = request.form['email']
+
+        query = "UPDATE Students \
+        SET first_name = %s, last_name = %s, email = %s \
+        WHERE studentID = %s"
+        data = (first_name_input, last_name_input, email_input, studentID_input)
+        result = execute_query(db_connection, query, data)
+        flash('Student updated!', 'success')
+        return redirect(url_for('students'))
+
 
 @app.route('/deletestudent/<int:id>')
 def deletestudent(id):

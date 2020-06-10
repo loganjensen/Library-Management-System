@@ -69,6 +69,9 @@ DELETE FROM 'Authors' WHERE 'authorID' = :author_id_from_delete_form
 -- Query to display studentID, first_name, last_name, and email for all students
 SELECT * FROM Students;
 
+--Query to select studentID, first_name, last_name, and email based on studentID
+SELECT studentID, first_name, last_name, email FROM Students WHERE studentID = :studentID;
+
 -- Query to insert new student into Students table
 INSERT INTO Students (first_name, last_name, email)
 VALUES (:first_name_input, :last_name_input, :email_input);
