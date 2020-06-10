@@ -34,32 +34,32 @@ DELETE FROM Books WHERE bookID = :book_id_from_delete_form
 --
 
 -- Read all Genres for main list page
-SELECT * FROM 'Genres'
+SELECT * FROM Genres
 -- Create new genre
-INSERT INTO `Genres` (`genre_name`)
+INSERT INTO Genres (genre_name)
 VALUES (:genre_name_input);
 -- Read names for search drop down
-SELECT genre_name AS genre FROM 'Genres'
+SELECT genre_name AS genre FROM Genres
 -- Update genre info (no planned implementation on the front end)
-UPDATE 'Genres' SET 'genre_name' = :genre_name WHERE 'genreID' = :genre_id_from_update_form
+UPDATE Genres SET genre_name = :genre_name WHERE genreID = :genre_id_from_update_form
 -- Delete genre entry
-DELETE FROM 'Genres' WHERE 'genreID' = :genre_id_from_delete_form
+DELETE FROM Genres WHERE genreID = :genre_id_from_delete_form
 
 --
 -- Manipuation for Authors
 --
 
 -- Read all Authors for main list
-SELECT * FROM 'Authors'
+SELECT * FROM Authors
 -- Create new author
-INSERT INTO `Authors` (`first_name`, `last_name`)
+INSERT INTO Authors (first_name, last_name)
 VALUES (:first_name_input, :last_name_input);
 -- Read Authors name for search drop down
-SELECT first_name,last_name FROM 'Authors'
+SELECT first_name,last_name FROM Authors
 -- Update authors info
-UPDATE 'Authors' SET 'first_name' = :first_name, 'last_name' = :last_name WHERE 'authorID' = :author_id_from_update_form
+UPDATE Authors SET first_name = :first_name, last_name = :last_name WHERE authorID = :author_id_from_update_form
 -- Delete author
-DELETE FROM 'Authors' WHERE 'authorID' = :author_id_from_delete_form
+DELETE FROM Authors WHERE authorID = :author_id_from_delete_form
 
 --
 -- Manipuation for Students

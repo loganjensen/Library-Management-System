@@ -96,9 +96,28 @@ def books():
 
     return render_template('books.html', books=result)
 
-@app.route('/addbook')
+@app.route('/addbook', methods=['GET','POST'])
 def addbook():
-    return render_template('addbook.html')
+    db_connection = connect_to_database()
+
+    #Show form to add book if method is GET
+    if request.method == 'GET':
+        #Get data of Authors and Genres so user can link an author to a book
+        author_query = "SELECT * FROM Authors"
+        author_result = execute_query(db_connection, author_query).fetchall()
+
+        genre_query = "SELECT * FROM Genres"
+        genre_result = execute_query(db_connection, genre_query).fetchall()
+
+        return render_template('addbook.html', authors=author_result, genres=genre_result)
+
+    #Add new book to database if method is POST
+    if request.method == 'POST':
+
+
+
+        flash('A Book Has Been Added!', 'success')
+        return redirect(url_for('books'))
 
 @app.route('/updatebook')
 def updatebook():
