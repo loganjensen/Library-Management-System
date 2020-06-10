@@ -11,19 +11,20 @@
 --
 
 -- Read all entries of Book
-SELECT * FROM 'Books'
+SELECT * FROM Books
 -- Read titles to fill loan a book drop down
-SELECT bookID,title FROM 'Books'
--- Read title of book with accociated Author and genre
-SELECT bookID, title, year_published, authorID, genreID
-FROM 'Books',
-INNER JOIN 'Authors' ON Books.authorID = Authors.authorID
-INNER JOIN 'Genres' ON Books.genreID = Genres.genreID
+SELECT bookID,title FROM Books
+-- Read title of book with associated author and genre
+SELECT bookID, title, year_published, Books.authorID, 
+Authors.first_name, Authors.last_name, Genres.genre_name
+FROM Books
+INNER JOIN Authors ON Books.authorID = Authors.authorID
+INNER JOIN Genres ON Books.genreID = Genres.genreID
 ORDER BY Title, year_published
 -- Update entry of book
-UPDATE 'books' SET 'title' = :title, 'year_published' = :year_published, 'authorID' = :authorID, 'genreID' = :genreID WHERE 'bookID'= :book_id_from_update_form
+UPDATE Books SET title = :title, year_published = :year_published, authorID = :authorID, 'genreID' = :genreID WHERE 'bookID'= :book_id_from_update_form
 -- Delete book entry
-DELETE FROM 'Books' WHERE id = :book_id_from_delete_form
+DELETE FROM Books WHERE id = :book_id_from_delete_form
 
 --
 -- Manipuation for Genres
@@ -57,10 +58,10 @@ DELETE FROM 'Authors' WHERE 'authorID' = :author_id_from_delete_form
 --
 
 -- Query to display studentID, first_name, last_name, and email for all students
-SELECT * FROM `Students`;
+SELECT * FROM Students;
 
 -- Query to insert new student into Students table
-INSERT INTO `Students` (`first_name`, `last_name`, `email`)
+INSERT INTO Students (`first_name`, `last_name`, `email`)
 VALUES (:first_name_input, :last_name_input, :email_input);
 
 -- Query to delete a student based on studentID

@@ -1,33 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Library Loan-System Database</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="index">Library-Loan System</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="booksonloan">Books on Loan</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="students">Manage Students</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="books">Manage Books</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+<!--Books Page-->
+{% extends "base.html" %}
+
+{% block content %}
 
 <h1>Search Books</h1>
 <form>
@@ -35,33 +9,38 @@
   <input type="text" id="bookid" name="bookid"><br><br>
    <input type="submit" value="Search">
 </form>
+
   <br>
   <h1>Manage Books</h1>
   <br>
-  <input type="button" name="add_book" value="Add a Book" onclick="window.location = 'addbook.html'">
+  <a href="{{url_for('addbook')}}"><button>Add a Book</button></a>
   <br><br>
-  <table class="table">
+  <table class="table table-bordered" id="studentTable">
     <thead>
       <tr>
+        <th scope="col">Book ID</th>
         <th scope="col">Title</th>
-        <th scope="col">Author</th>
-        <th scope="col">Genre</th>
         <th scope="col">Year Published</th>
-        <th scope="col"></th>
+        <th scope="col">Author ID</th>
+        <th scope="col">Author First Name</th>
+        <th scope="col">Author Last Name</th>
+        <th scope="col">Genre</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <th scope="row">The Great Gatsby</th>
-        <td>F. Scott Fitzgerald</td>
-        <td>Tragedy</td>
-        <td>1925</td>
-        <td>
-          <input type="button" name="update_book" value="update" onclick="window.location = 'updatebook.html'">
-          <input type="button" name="delete_book" value="delete">
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </body>
-</html>
+    {% for book in books %}
+    <tr>
+      <td>{{book[0]}}</td>
+      <td>{{book[1]}}</td>
+      <td>{{book[2]}}</td>
+      <td>{{book[3]}}</td>
+      <td>{{book[4]}}</td>
+      <td>{{book[5]}}</td>
+      <td>{{book[6]}}</td>
+      <td>
+        <a href="{{url_for('updatebook')}}"><button>Update</button></a>
+        <a href=""><button>Delete</button></a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
