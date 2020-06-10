@@ -9,10 +9,15 @@
 -- a) Data Definition Queries
 --
 
+DROP TABLE IF EXISTS `Authors`;
+DROP TABLE IF EXISTS `Genres`;
+DROP TABLE IF EXISTS `Books`;
+DROP TABLE IF EXISTS `Students`;
+DROP TABLE IF EXISTS `Books_On_Loan`;
+
 --
 -- Authors Table
 --
-DROP TABLE IF EXISTS `Authors`;
 CREATE TABLE `Authors` (
     `authorID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `first_name` varchar(255) NOT NULL,
@@ -22,7 +27,6 @@ CREATE TABLE `Authors` (
 --
 -- Genres Table
 --
-DROP TABLE IF EXISTS `Genres`;
 CREATE TABLE `Genres` (
     `genreID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `genre_name` varchar(255) UNIQUE NOT NULL
@@ -31,7 +35,6 @@ CREATE TABLE `Genres` (
 --
 -- Books Table
 --
-DROP TABLE IF EXISTS `Books`;
 CREATE TABLE `Books` (
     `bookID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `title` varchar(255) NOT NULL,
@@ -45,7 +48,6 @@ CREATE TABLE `Books` (
 --
 -- Students Table
 --
-DROP TABLE IF EXISTS `Students`;
 CREATE TABLE `Students` (
     `studentID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `first_name` varchar(255) NOT NULL,
@@ -56,7 +58,6 @@ CREATE TABLE `Students` (
 --
 -- Books_On_Loan Table
 --
-DROP TABLE IF EXISTS `Books_On_Loan`;
 CREATE TABLE `Books_On_Loan` (
     `loanID` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `bookID` int NOT NULL,

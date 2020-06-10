@@ -1,11 +1,11 @@
 from flask import Flask, render_template
 from flask import request, redirect
 # from db_connector.db_connector import connect_to_database, execute_query
+
 #create the web application
 app = Flask(__name__)
-app.config['DEBUG'] = True
+app.secret_key = 'SECRETKEY'
 
-#provide a route where requests on the web application can be addressed
 @app.route('/')
 @app.route('/index')
 def homepage():
