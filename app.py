@@ -14,11 +14,13 @@ def homepage():
 @app.route('/students')
 def students():
     db_connection = connect_to_database()
-    query = "SELECT first_name, last_name, email FROM Students;"
+    query = "SELECT studentID, first_name, last_name, email FROM Students;"
     result = execute_query(db_connection, query).fetchall()
-    print(result)
+    return render_template('students.html', students=result)
 
-    return render_template('students.html')
+@app.route('/addstudent')
+def addstudent():
+    return render_template('addstudent.html')
 
 @app.route('/books')
 def books():
