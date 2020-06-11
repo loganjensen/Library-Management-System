@@ -19,6 +19,8 @@ DROP TABLE IF EXISTS Books_On_Loan;
 
 --
 -- Authors Table
+-- This table holds information about the author of a book,
+-- and a book uses a FK to link to author/authors.
 --
 CREATE TABLE Authors (
     authorID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -28,6 +30,8 @@ CREATE TABLE Authors (
 
 --
 -- Genres Table
+-- This table holds information about books genres,
+-- and a book uses a FK to link to genre/genres.
 --
 CREATE TABLE Genres (
     genreID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -36,6 +40,8 @@ CREATE TABLE Genres (
 
 --
 -- Books Table
+-- This table holds information about books available in the library.
+-- Each book has author(s) and genre(s), and these book entities are used to track book loans.
 --
 CREATE TABLE Books (
     bookID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -49,6 +55,9 @@ CREATE TABLE Books (
 
 --
 -- Students Table
+-- This table holds information about students on campus.
+-- When loaning a book, a student entity will be linked with a book entity to track
+-- which students have which books.
 --
 -- Note: email data type informed by https://dba.stackexchange.com/questions/37014/in-what-data-type-should-i-store-an-email-address-in-database
 CREATE TABLE Students (
@@ -60,6 +69,8 @@ CREATE TABLE Students (
 
 --
 -- Books_On_Loan Table
+-- This table holds information about book loans.
+-- Each loan has one student and one book and tracks information related to that loan.
 --
 CREATE TABLE Books_On_Loan (
     loanID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
