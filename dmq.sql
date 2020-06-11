@@ -25,7 +25,7 @@ INNER JOIN Authors ON Books.authorID = Authors.authorID
 INNER JOIN Genres ON Books.genreID = Genres.genreID
 ORDER BY Title, year_published
 -- Update entry of book
-UPDATE Books SET title = :title, year_published = :year_published, authorID = :authorID, 'genreID' = :genreID WHERE 'bookID'= :book_id_from_update_form
+UPDATE Books SET title = :title, year_published = :year_published WHERE bookID= :book_id_from_update_form
 -- Delete book entry
 DELETE FROM Books WHERE bookID = :book_id_from_delete_form
 

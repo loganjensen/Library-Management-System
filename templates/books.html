@@ -15,7 +15,7 @@
   <br>
   <a href="{{url_for('addbook')}}"><button>Add a Book</button></a>
   <br><br>
-  <table class="table table-bordered" id="studentTable">
+  <table class="table table-bordered" id="bookTable">
     <thead>
       <tr>
         <th scope="col">Book ID</th>
@@ -37,7 +37,7 @@
       <td>{{book[5]}}</td>
       <td>{{book[6]}}</td>
       <td>
-        <a href="{{url_for('updatebook')}}"><button>Update</button></a>
+        <input type='button' value='Update' name='Update' onclick="window.location='/updatebook/{{book[0]}}'">
         <input type='button' value='Delete' name='Delete' onclick="window.location='/deletebook/{{book[0]}}'">
       </td>
     </tr>

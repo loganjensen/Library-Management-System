@@ -70,6 +70,7 @@ def updatestudent(id):
         WHERE studentID = %s"
         data = (first_name_input, last_name_input, email_input, studentID_input)
         result = execute_query(db_connection, query, data)
+        
         flash('Student updated!', 'success')
         return redirect(url_for('students'))
 
@@ -130,9 +131,38 @@ def addbook():
         flash('A Book Has Been Added!', 'success')
         return redirect(url_for('books'))
 
-@app.route('/updatebook')
-def updatebook():
-    return render_template('updatebook.html')
+@app.route('/updatebook/<int:id>', methods=['GET','POST'])
+def updatebook(id):
+    db_connection = connect_to_database()
+
+    if request.method == 'GET':
+        query = "SELECT bookID, title, year_published, Books.authorID, \
+        Authors.first_name, Authors.last_name, Genres.genre_name \
+        FROM Books \
+        INNER JOIN Authors ON Books.authorID = Authors.authorID \
+        INNER JOIN Genres ON Books.genreID = Genres.genreID \
+        WHERE bookID = %s" % id
+        book_result = execute_query(db_connection, query).fetchall()
+        bookID_result = execute_query(db_connection, query).fetchone()
+
+        if book_result == None:
+            return "No book found!"
+
+        return render_template('updatebook.html', book=book_result, bookID=bookID_result)
+
+    elif request.method == 'POST':
+        bookID_input = request.form['id']
+        title_input = request.form['title']
+        year_input = request.form['year']
+
+        query = "UPDATE Books \
+        SET title = %s, year_published = %s \
+        WHERE bookID= %s"
+        data = (title_input, year_input, bookID_input)
+
+        result = execute_query(db_connection, query, data)
+        flash('Book updated!', 'success')
+        return redirect(url_for('books'))
 
 @app.route('/deletebook/<int:id>')
 def deletebook(id):
