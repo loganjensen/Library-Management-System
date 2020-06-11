@@ -22,20 +22,22 @@
     </thead>
     <tbody>
       {% for loanedbook in booksonloan %}
-      <tr>
-        <td>{{loanedbook[0]}}</td>
-        <td>{{loanedbook[1]}}</td>
-        <td>{{loanedbook[2]}}</td>
-        <td>{{loanedbook[3]}}</td>
-        <td>{{loanedbook[4]}}</td>
-        <td>{{loanedbook[5]}}</td>
-        <td>{{loanedbook[6]}}</td>
-        <td>{{loanedbook[7]}}</td>
-        <td>{{loanedbook[8]}}</td>
-        <td>
-          <a href="{{url_for('updateloanbook')}}"><button>Update</button></a>
-          <a href=""><button>Delete</button></a>
-        </td>
-      </tr>
+        <tr>
+          <td>{{loanedbook[0]}}</td>
+          <td>{{loanedbook[1]}}</td>
+          <td>{{loanedbook[2]}}</td>
+          <td>{{loanedbook[3]}}</td>
+          <td>{{loanedbook[4]}}</td>
+          <td>{{loanedbook[5]}}</td>
+          <td>{{loanedbook[6]}}</td>
+          <td>{{loanedbook[7]}}</td>
+          <td>{{loanedbook[8]}}</td>
+          <td>
+            <a href="{{url_for('updateloanbook')}}"><button>Update</button></a>
+            <input type='button' value='Delete' name='Delete' onclick="window.location='/deleteloanbook/{{loanedbook[0]}}'">
+          </td>
+        </tr>
       {% endfor %}
+    </tbody>
+  </table>
   {% endblock %}

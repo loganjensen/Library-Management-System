@@ -198,3 +198,12 @@ def addloanbook():
 @app.route('/updateloanbook')
 def updateloanbook():
     return render_template('updateloanbook.html')
+
+@app.route('/deleteloanbook/<int:id>')
+def deleteloanbook(id):
+    db_connection = connect_to_database()
+    query = "DELETE FROM Books_On_Loan WHERE loanID = %s"
+    data = (id, )
+    result = execute_query(db_connection, query, data)
+    flash('Loaned book data has been deleted!', 'success')
+    return redirect(url_for('booksonloan'))
