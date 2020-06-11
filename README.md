@@ -1,4 +1,7 @@
-# Library-Loan-System-
+# Library-Loan-System
+```bash
+A simple front-end/back-end for a small university library loan system.
+```
 
 ## Installation
 
