@@ -50,6 +50,7 @@ CREATE TABLE Books (
 --
 -- Students Table
 --
+-- Note: email data type informed by https://dba.stackexchange.com/questions/37014/in-what-data-type-should-i-store-an-email-address-in-database
 CREATE TABLE Students (
     studentID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     first_name varchar(255) NOT NULL,
