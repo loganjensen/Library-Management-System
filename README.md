@@ -3,6 +3,10 @@
 A simple front-end/back-end for a small university library loan system.
 ```
 
+```bash
+Note: You must be connected to the OSU VPN for the database queries to work.
+```
+
 ## Installation
 
 ```bash
