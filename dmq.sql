@@ -105,7 +105,9 @@ VALUES (:bookID, :studentID, :date_checkout, :date_due, :date_returned, :late_fe
 -- Query to delete a book on loan
 DELETE FROM Books_On_Loan WHERE loanID = :loanID;
 
--- Query to update a book on loan
+-- Query to update a book on loan. Only allowing date_due and date_returned to be updated.
+-- User would need to delete/create new loan if critical data needs to be changed
+-- This helps ensure integrity so that late fees, students, etc. cannot be changed randomly or unknowingly
 UPDATE Books_On_Loan
-SET bookID = :bookID_input, studentID = :studentID_input, date_checkout = :date_checkout_input, date_due = :date_due_input, date_returned = :date_returned_input, late_fee = :late_fee_input
+SET date_due = :date_due_input, date_returned = :date_returned_input
 WHERE loanID = :loanID_input;

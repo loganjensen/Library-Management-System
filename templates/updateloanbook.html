@@ -2,21 +2,57 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form action="#" method="POST">
+<!--Show existing data to user-->
+<h4>Current Loaned Book Data</h4>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Loan ID</th>
+      <th scope="col">Book Title</th>
+      <th scope="col">Student ID</th>
+      <th scope="col">Student First Name</th>
+      <th scope="col">Student Last Name</th>
+      <th scope="col">Current Date Loaned</th>
+      <th scope="col">Current Date Due</th>
+      <th scope="col">Current Date Returned</th>
+      <th scope="col">Current Late Fee</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for loandata in bookloan %}
+      <tr>
+        <td>{{loandata[0]}}</td>
+        <td>{{loandata[1]}}</td>
+        <td>{{loandata[2]}}</td>
+        <td>{{loandata[3]}}</td>
+        <td>{{loandata[4]}}</td>
+        <td>{{loandata[5]}}</td>
+        <td>{{loandata[6]}}</td>
+        <td>{{loandata[7]}}</td>
+        <td>{{loandata[8]}}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<br>
+
+<form action="/updateloanbook/{{loanID[0]}}" method="POST">
     <fieldset>
       <h4>Update Loaned Book:</h4>
-        <label for="loandate">Date Loaned:</label>
-        <input type="date" id="loandate" name="loandate">
-        <br>
+        <input type="hidden" name="id" id="id" value = "{{loanID[0]}}">
+
         <label for="duedate">Date Due:</label>
-        <input type="date" id="duedate" name="duedate">
+        <input type="date" id="duedate" name="duedate" required>
         <br>
+
         <label for="datereturned">Date Returned:</label>
         <input type="date" id="datereturned" name="datereturned">
         <br>
+
         <input type="submit" value="Submit">
     </fieldset>
 </form>
 <br><br>
-<input type="button" name="return" value="Return" onclick="window.location = 'booksonloan.html'">
+<a href="{{url_for('booksonloan')}}"><button>Return to Books on Page</button></a>
 {% endblock %}

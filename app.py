@@ -195,9 +195,47 @@ def addloanbook():
         return redirect(url_for('booksonloan'))
 
 
-@app.route('/updateloanbook')
-def updateloanbook():
-    return render_template('updateloanbook.html')
+@app.route('/updateloanbook/<int:id>', methods=['GET','POST'])
+def updateloanbook(id):
+    db_connection = connect_to_database()
+
+    if request.method == 'GET':
+        #Get information to be shown to user when updating a book loan
+        query = "SELECT loanID, Books.title, \
+        Books_On_Loan.studentID, Students.first_name, Students.last_name, \
+        date_checkout, date_due, date_returned, late_fee \
+        FROM Books_On_Loan \
+        INNER JOIN Books ON Books_On_Loan.bookID = Books.bookID \
+        INNER JOIN Students ON Books_On_Loan.studentID = Students.studentID \
+        WHERE loanID = %s" % id
+
+        bookloan_result = execute_query(db_connection, query).fetchall()
+        loanID_result = execute_query(db_connection, query).fetchone()
+
+        if bookloan_result == None:
+            return "No book loan data found!"
+
+        return render_template('updateloanbook.html', bookloan=bookloan_result, loanID=loanID_result)
+
+    elif request.method == 'POST':
+        #Get data from form
+        loanID_input = request.form['id']
+        duedate_input = request.form['duedate']
+
+        if not request.form['datereturned']:
+            date_returned_input = None
+        else:
+            datereturned_input = request.form['datereturned']
+
+        #Perform query to update loan book data
+        query = "UPDATE Books_On_Loan \
+        SET date_due = %s, date_returned = %s \
+        WHERE loanID = %s"
+        data = (duedate_input, datereturned_input, loanID_input)
+        result = execute_query(db_connection, query, data)
+
+        flash('Loan data updated!', 'success')
+        return redirect(url_for('booksonloan'))
 
 @app.route('/deleteloanbook/<int:id>')
 def deleteloanbook(id):

@@ -18,6 +18,7 @@
         <th scope="col">Date Due</th>
         <th scope="col">Date Returned</th>
         <th scope="col">Late Fee</th>
+        <th scope="col">Edit Book Loan</th>
       </tr>
     </thead>
     <tbody>
@@ -33,7 +34,7 @@
           <td>{{loanedbook[7]}}</td>
           <td>{{loanedbook[8]}}</td>
           <td>
-            <a href="{{url_for('updateloanbook')}}"><button>Update</button></a>
+            <input type='button' value='Update' name='Update' onclick="window.location='/updateloanbook/{{loanedbook[0]}}'">
             <input type='button' value='Delete' name='Delete' onclick="window.location='/deleteloanbook/{{loanedbook[0]}}'">
           </td>
         </tr>
