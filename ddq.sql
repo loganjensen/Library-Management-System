@@ -5,11 +5,11 @@
 -- Group: 36
 -- Project Title: Library Loan-System Database
 
-DROP TABLE IF EXISTS Authors;
-DROP TABLE IF EXISTS Genres;
+DROP TABLE IF EXISTS Books_On_Loan;
 DROP TABLE IF EXISTS Books;
 DROP TABLE IF EXISTS Students;
-DROP TABLE IF EXISTS Books_On_Loan;
+DROP TABLE IF EXISTS Authors;
+DROP TABLE IF EXISTS Genres;
 
 --
 --
