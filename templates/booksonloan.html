@@ -2,43 +2,43 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Books on Loan</h1>
-  <br>
-  <a href="{{url_for('addloanbook')}}"><button>Loan a Book</button></a>
-  <br><br>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Loan ID</th>
-        <th scope="col">Book Title</th>
-        <th scope="col">Student ID</th>
-        <th scope="col">Student First Name</th>
-        <th scope="col">Student Last Name</th>
-        <th scope="col">Date Loaned</th>
-        <th scope="col">Date Due</th>
-        <th scope="col">Date Returned</th>
-        <th scope="col">Late Fee</th>
-        <th scope="col">Edit Book Loan</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for loanedbook in booksonloan %}
-        <tr>
-          <td>{{loanedbook[0]}}</td>
-          <td>{{loanedbook[1]}}</td>
-          <td>{{loanedbook[2]}}</td>
-          <td>{{loanedbook[3]}}</td>
-          <td>{{loanedbook[4]}}</td>
-          <td>{{loanedbook[5]}}</td>
-          <td>{{loanedbook[6]}}</td>
-          <td>{{loanedbook[7]}}</td>
-          <td>{{loanedbook[8]}}</td>
-          <td>
-            <input type='button' value='Update' name='Update' onclick="window.location='/updateloanbook/{{loanedbook[0]}}'">
-            <input type='button' value='Delete' name='Delete' onclick="window.location='/deleteloanbook/{{loanedbook[0]}}'">
-          </td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  {% endblock %}
+<h1>Books on Loan</h1>
+<br>
+<a href="{{url_for('addloanbook')}}"><button>Loan a Book</button></a>
+<br><br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Loan ID</th>
+      <th scope="col">Book Title</th>
+      <th scope="col">Student ID</th>
+      <th scope="col">Student First Name</th>
+      <th scope="col">Student Last Name</th>
+      <th scope="col">Date Loaned</th>
+      <th scope="col">Date Due</th>
+      <th scope="col">Date Returned</th>
+      <th scope="col">Late Fee</th>
+      <th scope="col">Edit Book Loan</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for loanedbook in booksonloan %}
+    <tr>
+      <td>{{loanedbook[0]}}</td>
+      <td>{{loanedbook[1]}}</td>
+      <td>{{loanedbook[2]}}</td>
+      <td>{{loanedbook[3]}}</td>
+      <td>{{loanedbook[4]}}</td>
+      <td>{{loanedbook[5]}}</td>
+      <td>{{loanedbook[6]}}</td>
+      <td>{{loanedbook[7]}}</td>
+      <td>{{loanedbook[8]}}</td>
+      <td>
+        <input type='button' value='Update' name='Update' onclick="window.location='/updateloanbook/{{loanedbook[0]}}'">
+        <input type='button' value='Delete' name='Delete' onclick="window.location='/deleteloanbook/{{loanedbook[0]}}'">
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

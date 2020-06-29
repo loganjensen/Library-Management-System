@@ -1,14 +1,16 @@
 import MySQLdb as mariadb
 from db_credentials import host, user, passwd, db
 
-def connect_to_database(host = host, user = user, passwd = passwd, db = db):
+
+def connect_to_database(host=host, user=user, passwd=passwd, db=db):
     '''
     connects to a database and returns a database objects
     '''
-    db_connection = mariadb.connect(host,user,passwd,db)
+    db_connection = mariadb.connect(host, user, passwd, db)
     return db_connection
 
-def execute_query(db_connection = None, query = None, query_params = ()):
+
+def execute_query(db_connection=None, query=None, query_params=()):
     '''
     executes a given SQL query on the given db connection and returns a Cursor object
 
@@ -37,7 +39,7 @@ def execute_query(db_connection = None, query = None, query_params = ()):
     for q in query_params:
         params = params + (q)
     '''
-    #TODO: Sanitize the query before executing it!!!
+    # TODO: Sanitize the query before executing it!!!
     cursor.execute(query, query_params)
     # this will actually commit any changes to the database. without this no
     # changes will be committed!

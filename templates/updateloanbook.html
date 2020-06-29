@@ -20,17 +20,17 @@
   </thead>
   <tbody>
     {% for loandata in bookloan %}
-      <tr>
-        <td>{{loandata[0]}}</td>
-        <td>{{loandata[1]}}</td>
-        <td>{{loandata[2]}}</td>
-        <td>{{loandata[3]}}</td>
-        <td>{{loandata[4]}}</td>
-        <td>{{loandata[5]}}</td>
-        <td>{{loandata[6]}}</td>
-        <td>{{loandata[7]}}</td>
-        <td>{{loandata[8]}}</td>
-      </tr>
+    <tr>
+      <td>{{loandata[0]}}</td>
+      <td>{{loandata[1]}}</td>
+      <td>{{loandata[2]}}</td>
+      <td>{{loandata[3]}}</td>
+      <td>{{loandata[4]}}</td>
+      <td>{{loandata[5]}}</td>
+      <td>{{loandata[6]}}</td>
+      <td>{{loandata[7]}}</td>
+      <td>{{loandata[8]}}</td>
+    </tr>
     {% endfor %}
   </tbody>
 </table>
@@ -38,20 +38,20 @@
 <br>
 
 <form action="/updateloanbook/{{loanID[0]}}" method="POST">
-    <fieldset>
-      <h4>Update Loaned Book:</h4>
-        <input type="hidden" name="id" id="id" value = "{{loanID[0]}}">
+  <fieldset>
+    <h4>Update Loaned Book:</h4>
+    <input type="hidden" name="id" id="id" value="{{loanID[0]}}">
 
-        <label for="duedate">Date Due:</label>
-        <input type="date" id="duedate" name="duedate" required>
-        <br>
+    <label for="duedate">Date Due:</label>
+    <input type="date" id="duedate" name="duedate" required>
+    <br>
 
-        <label for="datereturned">Date Returned:</label>
-        <input type="date" id="datereturned" name="datereturned" required>
-        <br>
+    <label for="datereturned">Date Returned:</label>
+    <input type="date" id="datereturned" name="datereturned" required>
+    <br>
 
-        <input type="submit" value="Submit">
-    </fieldset>
+    <input type="submit" value="Submit">
+  </fieldset>
 </form>
 <br><br>
 <a href="{{url_for('booksonloan')}}"><button>Return to Books on Page</button></a>

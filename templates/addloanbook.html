@@ -2,49 +2,49 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form action="/addloanbook" method="POST">
-        <fieldset>
-          <h4>Loan a Book:</h4>
+<form action="/addloanbook" method="POST">
+  <fieldset>
+    <h4>Loan a Book:</h4>
 
-            <!--Display students available for loan-->
-            <label for="student">Choose a student for loan:</label>
-            <br>
-            {% if students %}
-                <select id="student" name="student" size="8" required>
-                  {% for student in students %}
-                    <option value="{{student[0]}}">{{student[1] + ' ' + student[2]}}</option>
-                    {% endfor %}
-                </select>
-            {% endif %}
-            <br><br>
+    <!--Display students available for loan-->
+    <label for="student">Choose a student for loan:</label>
+    <br>
+    {% if students %}
+    <select id="student" name="student" size="8" required>
+      {% for student in students %}
+      <option value="{{student[0]}}">{{student[1] + ' ' + student[2]}}</option>
+      {% endfor %}
+    </select>
+    {% endif %}
+    <br><br>
 
-            <!--Display the books available for loan-->
-            <label for="book">Choose a book to loan:</label>
-            <br>
-            {% if books %}
-                <select id="book" name="book" size="8" required>
-                  {% for book in books %}
-                    <option value="{{book[0]}}">{{book[1]}}</option>
-                  {% endfor %}
-                </select>
-            {% endif %}
-            <br><br>
+    <!--Display the books available for loan-->
+    <label for="book">Choose a book to loan:</label>
+    <br>
+    {% if books %}
+    <select id="book" name="book" size="8" required>
+      {% for book in books %}
+      <option value="{{book[0]}}">{{book[1]}}</option>
+      {% endfor %}
+    </select>
+    {% endif %}
+    <br><br>
 
-            <label for="loandate">Date Loaned:</label>
-            <input type="date" id="loandate" name="loandate" required>
-            <br><br>
+    <label for="loandate">Date Loaned:</label>
+    <input type="date" id="loandate" name="loandate" required>
+    <br><br>
 
-            <label for="duedate">Date Due:</label>
-            <input type="date" id="duedate" name="duedate" required>
-            <br><br>
+    <label for="duedate">Date Due:</label>
+    <input type="date" id="duedate" name="duedate" required>
+    <br><br>
 
-            <label for="latefee">Late Fee:</label>
-            <input type="nunber" id="latefee" name="latefee" required>
-            <br><br>
+    <label for="latefee">Late Fee:</label>
+    <input type="nunber" id="latefee" name="latefee" required>
+    <br><br>
 
-            <input type="submit" value="Submit">
-        </fieldset>
-      </form>
-      <br><br>
+    <input type="submit" value="Submit">
+  </fieldset>
+</form>
+<br><br>
 <a href="{{url_for('booksonloan')}}"><button>Return to Books On Loan Page</button></a>
 {% endblock %}

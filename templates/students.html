@@ -2,31 +2,31 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Manage Students</h1>
-  <br>
-  <a href="{{url_for('addstudent')}}"><button>Add a Student</button></a>
-  <br><br>
-  <table class="table table-bordered" id="studentTable">
-    <thead>
-      <tr>
-        <th scope="col">StudentID</th>
-        <th scope="col">First Name</th>
-        <th scope="col">Last Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Edit Student</th>
-      </tr>
-    </thead>
-    {% for student in students %}
+<h1>Manage Students</h1>
+<br>
+<a href="{{url_for('addstudent')}}"><button>Add a Student</button></a>
+<br><br>
+<table class="table table-bordered" id="studentTable">
+  <thead>
     <tr>
-      <td>{{student[0]}}</td>
-      <td>{{student[1]}}</td>
-      <td>{{student[2]}}</td>
-      <td>{{student[3]}}</td>
-      <td>
-        <input type='button' value='Update' name='Update' onclick="window.location='/updatestudent/{{student[0]}}'">
-        <input type='button' value='Delete' name='Delete' onclick="window.location='/deletestudent/{{student[0]}}'">
-      </td>
+      <th scope="col">StudentID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Edit Student</th>
     </tr>
-    {% endfor %}
-  </table>
+  </thead>
+  {% for student in students %}
+  <tr>
+    <td>{{student[0]}}</td>
+    <td>{{student[1]}}</td>
+    <td>{{student[2]}}</td>
+    <td>{{student[3]}}</td>
+    <td>
+      <input type='button' value='Update' name='Update' onclick="window.location='/updatestudent/{{student[0]}}'">
+      <input type='button' value='Delete' name='Delete' onclick="window.location='/deletestudent/{{student[0]}}'">
+    </td>
+  </tr>
+  {% endfor %}
+</table>
 {% endblock %}

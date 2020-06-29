@@ -5,43 +5,43 @@
 
 <h1>Search Books</h1>
 <form>
- <label for="search"></label>
+  <label for="search"></label>
   <input type="text" id="bookid" name="bookid"><br><br>
-   <input type="submit" value="Search">
+  <input type="submit" value="Search">
 </form>
 
-  <br>
-  <h1>Manage Books</h1>
-  <br>
-  <a href="{{url_for('addbook')}}"><button>Add a Book</button></a>
-  <br><br>
-  <table class="table table-bordered" id="bookTable">
-    <thead>
-      <tr>
-        <th scope="col">Book ID</th>
-        <th scope="col">Title</th>
-        <th scope="col">Year Published</th>
-        <th scope="col">Author ID</th>
-        <th scope="col">Author First Name</th>
-        <th scope="col">Author Last Name</th>
-        <th scope="col">Genre</th>
-        <th scope="col">Edit Book</th>
-      </tr>
-    </thead>
-    {% for book in books %}
+<br>
+<h1>Manage Books</h1>
+<br>
+<a href="{{url_for('addbook')}}"><button>Add a Book</button></a>
+<br><br>
+<table class="table table-bordered" id="bookTable">
+  <thead>
     <tr>
-      <td>{{book[0]}}</td>
-      <td>{{book[1]}}</td>
-      <td>{{book[2]}}</td>
-      <td>{{book[3]}}</td>
-      <td>{{book[4]}}</td>
-      <td>{{book[5]}}</td>
-      <td>{{book[6]}}</td>
-      <td>
-        <input type='button' value='Update' name='Update' onclick="window.location='/updatebook/{{book[0]}}'">
-        <input type='button' value='Delete' name='Delete' onclick="window.location='/deletebook/{{book[0]}}'">
-      </td>
+      <th scope="col">Book ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Year Published</th>
+      <th scope="col">Author ID</th>
+      <th scope="col">Author First Name</th>
+      <th scope="col">Author Last Name</th>
+      <th scope="col">Genre</th>
+      <th scope="col">Edit Book</th>
     </tr>
-    {% endfor %}
-  </table>
+  </thead>
+  {% for book in books %}
+  <tr>
+    <td>{{book[0]}}</td>
+    <td>{{book[1]}}</td>
+    <td>{{book[2]}}</td>
+    <td>{{book[3]}}</td>
+    <td>{{book[4]}}</td>
+    <td>{{book[5]}}</td>
+    <td>{{book[6]}}</td>
+    <td>
+      <input type='button' value='Update' name='Update' onclick="window.location='/updatebook/{{book[0]}}'">
+      <input type='button' value='Delete' name='Delete' onclick="window.location='/deletebook/{{book[0]}}'">
+    </td>
+  </tr>
+  {% endfor %}
+</table>
 {% endblock %}
